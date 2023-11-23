@@ -8,31 +8,38 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="header">Calculator</div>
+    <div class="header"></div>
     <div class="calculator-frame">
         <div class="screen">
             <p class="screen-sum">1 + 2</p>
             <p class="screen-result">3</p>
         </div>
         <div class="button-container">
-            <button class="button" id="clear">Clear</button>
-            <button class="button" id="divide">/</button>
-            <button class="button" id="7">7</button>
-            <button class="button" id="8">8</button>
-            <button class="button" id="9">9</button>
-            <button class="button" id="x">x</button>
-            <button class="button" id="4">4</button>
-            <button class="button" id="5">5</button>
-            <button class="button" id="6">6</button>
-            <button class="button" id="-">-</button>
-            <button class="button" id="1">1</button>
-            <button class="button" id="2">2</button>
-            <button class="button" id="3">3</button>
-            <button class="button" id="+">+</button>
-            <button class="button" id="0">0</button>
-            <button class="button" id=".">.</button>
-            <button class="button" id="=">=</button>
+            <button class="button clear" id="clear" onclick="this.blur();">C</button>
+            <button class="button delete" id='backspace' onclick="this.blur();">⬅</button>
+            <button class="button operator" id="/" onclick="this.blur();">÷</button>
+            <button class="button number" id="7" onclick="this.blur();">7</button>
+            <button class="button number" id="8" onclick="this.blur();">8</button>
+            <button class="button number" id="9" onclick="this.blur();">9</button>
+            <button class="button operator" id="x" onclick="this.blur();">x</button>
+            <button class="button number" id="4" onclick="this.blur();">4</button>
+            <button class="button number" id="5" onclick="this.blur();">5</button>
+            <button class="button number" id="6" onclick="this.blur();">6</button>
+            <button class="button operator" id="-" onclick="this.blur();">-</button>
+            <button class="button number" id="1" onclick="this.blur();">1</button>
+            <button class="button number" id="2" onclick="this.blur();">2</button>
+            <button class="button number" id="3" onclick="this.blur();">3</button>
+            <button class="button operator" id="+" onclick="this.blur();">+</button>
+            <button class="button number" id="0" onclick="this.blur();">0</button>
+            <button class="button decimal" id="." onclick="this.blur();">.</button>
+            <button class="button equals" id="=" onclick="this.blur();">=</button>
         </div>
     </div>
+    <div class="footer">
+        <p class="footer-text">Copyright © JCritch91 </p>
+        <a href="https://github.com/JCritch91">
+        <img id="github" src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="">
+        </a>
+        </div>
 </body>
 </html>
