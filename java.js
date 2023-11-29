@@ -7,21 +7,121 @@ let num1 = ''
 let num2 = ''
 let operator = ''
 result = 'nothing'
-
-buttonContainer.addEventListener('mousedown', mouseDwn, false)
-buttonContainer.addEventListener('mouseup', mouseUp, false)
+const numArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+const operArr = ['+', '-', '/', 'x']
+const deci = '.'
+const equal = '='
 
 buttonContainer.addEventListener('click', handleClick, false)
 
-function mouseDwn(e){
-    const { target } = e  
-    target.classList.add('mousedown')
-}
+document.addEventListener('keyup', handleKey, false)
 
-function mouseUp(e){
-    const { target } = e  
-    target.classList.remove('mousedown')
-}
+
+  function handleKey(e) {
+    const pressed = e.key
+    const key = pressed.toString()
+    if (key.match(/^(1|2|3|4|5|6|7|8|9|0)$/)) {
+        numberKey()
+    }
+    else if (key=='+'||key=='-'||key=='x'||key=='/'){
+        operKey()
+    }
+
+    else if (key == '.') {
+        deciKey()
+    }
+
+    else if (key == 'Enter') {
+        equalsKey()
+    }
+
+    else if (key == 'Backspace') {
+        delKey()
+    }
+
+    function numberKey() {
+        if (result !=='' && operator == ''){
+            fullReset()
+            
+        }
+        if (operator == ''){
+            num1 += key
+        }
+        else {
+            num2 += key
+        }
+    }
+
+    function operKey() {
+        if (operator == '' && num1 !== ''){
+            operator = key
+        }
+        else if (operator !== '' && num2 !== '' ){
+            operate(num1, operator, num2)
+        }
+        else {
+            num1 = result 
+            operator = key
+            screenSum.textContent = `${num1} ${operator} ${num2}`
+        }
+    }
+
+    function deciKey() {
+        if (num1 !== '' && operator =='') {
+            if (num1.includes(key)) {
+                return
+            }
+            else{
+            num1 += key
+            }
+        }
+        else if (operator !== '') {
+            if (num2.includes(key)){
+                return
+            }
+            else {
+            num2 += key
+            }
+        }
+    }
+
+    function equalsKey() {
+        if (num1 !=='' && num2 !==''){
+            operate(num1, operator, num2)
+        }
+        else {
+            return
+        }
+    }
+
+    function delKey() {
+        if (num1 == '' && operator == '' && num2 ==''){
+            return
+        }
+        else if (num2 !== ''){
+            num2 = num2.slice(0, -1)
+        }
+        else if (num2 =='' && operator !== ''){
+            operator = ''
+        }
+        else if (num2 =='' && operator ==''){
+            num1 = num1.slice(0, -1)
+            screenSum.textContent = `${num1} ${operator} ${num2}`
+        }
+    }
+
+    if (num1==''){
+        return
+    }
+    else {
+        screenSum.textContent = `${num1} ${operator} ${num2}`
+    }
+  }
+    
+
+
+  
+
 
 function handleClick(e) {
     const { target } = e    
